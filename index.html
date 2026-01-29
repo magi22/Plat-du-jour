@@ -5,57 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Plat du Jour - Découvrez les meilleurs plats autour de vous</title>
 
+    <!-- Favicon (mettre logo.png dans /public) -->
+    <link rel="icon" type="image/png" href="/logo.png" />
+
     <!-- Google Font -->
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
 
-    <!-- Tailwind CDN (OK pour landing page) -->
+    <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
     <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['Poppins', 'sans-serif'],
-            },
-            colors: {
-              primary: '#FF5722',
-              secondary: '#2D2D2D',
-              light: '#F8F9FA',
-            },
-            animation: {
-              float: 'float 6s ease-in-out infinite',
-              'float-delayed': 'float 6s ease-in-out 3s infinite',
-              'slide-up': 'slideUp 0.8s ease-out forwards',
-              'pop-in':
-                'popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards',
-              'fade-in': 'fadeIn 0.3s ease-out forwards',
-            },
-            keyframes: {
-              float: {
-                '0%, 100%': { transform: 'translateY(0)' },
-                '50%': { transform: 'translateY(-20px)' },
-              },
-              slideUp: {
-                '0%': { opacity: '0', transform: 'translateY(20px)' },
-                '100%': { opacity: '1', transform: 'translateY(0)' },
-              },
-              popIn: {
-                '0%': { opacity: '0', transform: 'scale(0.8)' },
-                '100%': { opacity: '1', transform: 'scale(1)' },
-              },
-              fadeIn: {
-                '0%': { opacity: '0', transform: 'translateY(-10px)' },
-                '100%': { opacity: '1', transform: 'translateY(0)' },
-              },
-            },
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Poppins', 'sans-serif'],
+        },
+        colors: {
+          primary: '#C1111F', /* ROUGE LOGO OFFICIEL */
+          secondary: '#2D2D2D',
+          light: '#F8F9FA',
+        },
+        animation: {
+          float: 'float 6s ease-in-out infinite',
+          'float-delayed': 'float 6s ease-in-out 3s infinite',
+          'slide-up': 'slideUp 0.8s ease-out forwards',
+          'pop-in':
+            'popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards',
+          'fade-in': 'fadeIn 0.3s ease-out forwards',
+        },
+        keyframes: {
+          float: {
+            '0%, 100%': { transform: 'translateY(0)' },
+            '50%': { transform: 'translateY(-20px)' },
+          },
+          slideUp: {
+            '0%': { opacity: '0', transform: 'translateY(20px)' },
+            '100%': { opacity: '1', transform: 'translateY(0)' },
+          },
+          popIn: {
+            '0%': { opacity: '0', transform: 'scale(0.8)' },
+            '100%': { opacity: '1', transform: 'scale(1)' },
+          },
+          fadeIn: {
+            '0%': { opacity: '0', transform: 'translateY(-10px)' },
+            '100%': { opacity: '1', transform: 'translateY(0)' },
           },
         },
-      }
-    </script>
+      },
+    },
+  }
+</script>
+
   </head>
 
   <body>
