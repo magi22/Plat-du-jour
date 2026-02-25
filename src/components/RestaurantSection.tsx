@@ -21,7 +21,7 @@ const RestaurantSection: React.FC = () => {
             {/* Mascotte collée en bas à droite de l'image */}
             <img src={Mascotte} alt="" aria-hidden draggable={false}
               className="absolute bottom-0 right-2 h-32 xl:h-36 w-auto z-20 pointer-events-none select-none hidden lg:block animate-float"
-              style={{ filter: 'drop-shadow(0 0 8px rgba(255,255,255,1)) drop-shadow(0 0 16px rgba(255,255,255,0.8)) drop-shadow(0 0 24px rgba(255,255,255,0.5))' }} />
+              style={{ filter: 'drop-shadow(0 0 5px rgba(255,255,255,0.9)) drop-shadow(0 0 10px rgba(255,255,255,0.4))' }} />
 
             <div className="absolute inset-0 bg-primary/10 rounded-3xl transform rotate-3 group-hover:rotate-6 transition-transform duration-500" />
             <div className="relative overflow-hidden rounded-3xl shadow-2xl">

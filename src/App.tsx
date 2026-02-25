@@ -13,6 +13,7 @@ import { Faq } from './components/Faq';
 import DownloadSection from './components/DownloadSection';
 import Footer from './components/Footer';
 import { ScrollToTop } from './components/ui/ScrollToTop';
+import { ChatBot } from './components/ui/ChatBot';
 
 /*
  * TRANSITIONS
@@ -76,6 +77,7 @@ const App: React.FC = () => (
       </main>
 
       <Footer />
+      <ChatBot />
       <ScrollToTop />
     </div>
   </LanguageProvider>
