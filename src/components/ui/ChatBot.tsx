@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle, X, ChevronRight, Send } from 'lucide-react';
 import Mascotte from '../../assets/Mascotte@2x.png';
@@ -21,6 +21,16 @@ export function ChatBot() {
   const [open, setOpen]       = useState(false);
   const [answer, setAnswer]   = useState<string | null>(null);
   const [complex, setComplex] = useState(false);
+  const [hint, setHint]       = useState(false);
+  const timer = useRef<ReturnType<typeof setTimeout>>();
+
+  /* Message d'aide automatique après 15 secondes */
+  useEffect(() => {
+    timer.current = setTimeout(() => setHint(true), 15000);
+    return () => clearTimeout(timer.current);
+  }, []);
+
+  function dismissHint() { setHint(false); clearTimeout(timer.current); }
 
   function handleQuestion(qa: QA) {
     if (qa.a) { setAnswer(qa.a); setComplex(false); }
@@ -31,9 +41,33 @@ export function ChatBot() {
 
   return (
     <>
-      {/* Bulle flottante — positionnée au-dessus du bouton ScrollToTop */}
+      {/* Bulle d'aide automatique (après 15 s) */}
+      <AnimatePresence>
+        {hint && !open && (
+          <motion.div
+            initial={{ opacity: 0, y: 10, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 10, scale: 0.9 }}
+            transition={{ duration: 0.25 }}
+            onClick={() => { setOpen(true); dismissHint(); }}
+            className="fixed bottom-[9.5rem] right-6 z-50 bg-white border border-gray-100 rounded-2xl rounded-br-sm shadow-xl px-4 py-3 max-w-[200px] cursor-pointer hover:shadow-2xl transition-shadow"
+          >
+            {/* Bouton fermer */}
+            <button
+              onClick={(e) => { e.stopPropagation(); dismissHint(); }}
+              className="absolute -top-2 -right-2 w-5 h-5 bg-gray-200 hover:bg-gray-300 rounded-full text-gray-600 text-xs flex items-center justify-center transition-colors"
+            >×</button>
+            {/* Triangle queue de bulle */}
+            <div className="absolute -bottom-2 right-6 w-4 h-4 bg-white border-r border-b border-gray-100 rotate-45" />
+            <p className="text-sm font-bold text-gray-800">Besoin d'aide ? 👋</p>
+            <p className="text-xs text-gray-500 mt-0.5 leading-snug">Je suis là pour vous aider !</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Bulle flottante */}
       <button
-        onClick={() => { setOpen(o => !o); reset(); }}
+        onClick={() => { setOpen(o => !o); reset(); dismissHint(); }}
         aria-label="Aide & Chat"
         className="fixed bottom-[6.5rem] right-6 z-50 w-12 h-12 rounded-full bg-primary text-white
           border-2 border-white/80

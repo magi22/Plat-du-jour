@@ -19,8 +19,8 @@ const Features: React.FC = () => {
       <img src={Mascotte} alt="" aria-hidden draggable={false}
         className="absolute right-0 top-1/2 -translate-y-1/2 h-full w-auto opacity-[0.05] pointer-events-none select-none translate-x-1/3 hidden xl:block" />
 
-      {/* Badge flottant */}
-      <div className="absolute top-20 left-4 lg:left-16 bg-white p-3 rounded-2xl shadow-xl border border-gray-100 animate-float z-10 hidden lg:flex items-center gap-3">
+      {/* Badge flottant — rapproché de l'intérieur, près des fonctionnalités */}
+      <div className="absolute top-36 left-[6%] xl:left-[10%] bg-white p-3 rounded-2xl shadow-xl border border-gray-100 animate-float z-10 hidden lg:flex items-center gap-3">
         <div className="bg-red-100 p-2 rounded-lg text-xl">❤️</div>
         <div>
           <p className="font-bold text-sm text-gray-900">{t.features.float[0]}</p>
