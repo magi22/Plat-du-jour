@@ -92,8 +92,8 @@ const Hero: React.FC = () => {
           </div>
 
           {/* Maquette téléphone */}
-          <div className="w-full lg:w-1/2 relative perspective-1000 z-10 mt-10 lg:mt-0">
-            <div className="relative mx-auto w-[320px] h-[640px] bg-gray-900 rounded-[3.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.5)] border-[12px] border-gray-900 transform rotate-y-12 rotate-x-6 hover:rotate-y-0 hover:rotate-x-0 transition-transform duration-700 ease-out z-10">
+          <div className="w-full lg:w-1/2 relative perspective-1000 z-10 mt-10 lg:mt-0 flex justify-center">
+            <div className="relative mx-auto w-[260px] h-[520px] sm:w-[300px] sm:h-[600px] md:w-[320px] md:h-[640px] bg-gray-900 rounded-[3.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.5)] border-[12px] border-gray-900 transform rotate-y-12 rotate-x-6 hover:rotate-y-0 hover:rotate-x-0 transition-transform duration-700 ease-out z-10">
               <div className="absolute top-24 -left-[16px] h-10 w-[4px] bg-gray-800 rounded-l-md" />
               <div className="absolute top-36 -left-[16px] h-16 w-[4px] bg-gray-800 rounded-l-md" />
               <div className="absolute top-28 -right-[16px] h-20 w-[4px] bg-gray-800 rounded-r-md" />
@@ -137,7 +137,7 @@ const Hero: React.FC = () => {
             </div>
 
             {/* Bulle flottante nourriture */}
-            <div className="absolute top-20 -right-16 md:-right-24 w-48 h-48 md:w-64 md:h-64 z-40 pointer-events-none animate-float-delayed">
+            <div className="absolute top-20 -right-10 sm:-right-16 md:-right-24 w-36 h-36 sm:w-48 sm:h-48 md:w-64 md:h-64 z-40 pointer-events-none animate-float-delayed hidden sm:block">
               <div className="relative w-full h-full">
                 <div className="w-full h-full rounded-full overflow-hidden border-4 border-white shadow-2xl">
                   <img
@@ -155,7 +155,7 @@ const Hero: React.FC = () => {
             </div>
 
             {/* Badge gauche bas */}
-            <div className="absolute bottom-40 -left-10 bg-white p-4 rounded-2xl shadow-xl flex items-center gap-3 animate-float z-30 max-w-[180px]">
+            <div className="absolute bottom-40 -left-4 sm:-left-10 bg-white p-3 sm:p-4 rounded-2xl shadow-xl flex items-center gap-2 sm:gap-3 animate-float z-30 max-w-[160px] sm:max-w-[180px] hidden sm:flex">
               <div className="bg-green-100 p-2 rounded-lg text-2xl">🌿</div>
               <div>
                 <p className="font-bold text-sm text-gray-800">{t.hero.fresh[0]}</p>
@@ -164,7 +164,7 @@ const Hero: React.FC = () => {
             </div>
 
             {/* Badge droite milieu */}
-            <div className="absolute top-32 -right-6 md:-right-12 bg-white p-3 rounded-2xl shadow-xl flex items-center gap-3 animate-float z-20" style={{ animationDelay: '2s' }}>
+            <div className="absolute top-32 -right-2 sm:-right-6 md:-right-12 bg-white p-2 sm:p-3 rounded-2xl shadow-xl flex items-center gap-2 sm:gap-3 animate-float z-20 hidden sm:flex" style={{ animationDelay: '2s' }}>
               <div className="bg-orange-100 p-2 rounded-lg text-xl">⏱️</div>
               <div>
                 <p className="font-bold text-sm text-gray-800">{t.hero.fast[0]}</p>

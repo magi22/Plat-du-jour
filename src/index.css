@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+html, body { overflow-x: hidden; max-width: 100%; }
+
 /* ── Animations de base ─────────────────────────────────── */
 @keyframes float        { 0%,100%{ transform:translateY(0); }       50%{ transform:translateY(-10px); } }
 @keyframes floatDelayed { 0%,100%{ transform:translateY(0); }       50%{ transform:translateY(-14px); } }

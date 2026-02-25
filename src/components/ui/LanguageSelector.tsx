@@ -42,7 +42,7 @@ export function LanguageSelector() {
       {open && (
         <ul
           role="listbox"
-          className="absolute right-0 mt-2 w-40 bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden z-50 animate-pop-in"
+          className="absolute left-1/2 -translate-x-1/2 mt-2 w-40 bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden z-[200] animate-pop-in"
         >
           {LANGS.map(({ code, label, flag }) => (
             <li key={code} role="option" aria-selected={code === lang}>

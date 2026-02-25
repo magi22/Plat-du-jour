@@ -6,15 +6,15 @@ import Mascotte from '../../assets/Mascotte@2x.png';
 const WA_URL  = 'https://wa.me/221785421733';
 const TG_URL  = 'https://t.me/+221785421733';
 
-type QA = { q: string; a: string | null };
+type QA = { q: string; a: string | null; complex?: true };
 
 const QA_LIST: QA[] = [
   { q: "Comment télécharger l'app ?",   a: "Disponible gratuitement sur l'App Store (iOS) et Google Play (Android). Cherchez « Plat du Jour » et installez-la !" },
   { q: "L'app est-elle gratuite ?",      a: "Oui ! La version de base est 100% gratuite. Une offre Premium existe pour les utilisateurs et les restaurants souhaitant plus de fonctionnalités." },
   { q: "Comment ça fonctionne ?",        a: "Activez la géolocalisation, parcourez les menus du jour autour de vous, choisissez votre plat et réservez en quelques clics. C'est aussi simple que ça !" },
-  { q: "Disponible dans ma ville ?",     a: null },
-  { q: "Inscrire mon restaurant",        a: null },
-  { q: "Problème technique / autre",     a: null },
+  { q: "Disponible dans ma ville ?",     a: null, complex: true },
+  { q: "Inscrire mon restaurant",        a: null, complex: true },
+  { q: "Problème technique / autre",     a: null, complex: true },
 ];
 
 export function ChatBot() {
@@ -23,32 +23,27 @@ export function ChatBot() {
   const [complex, setComplex] = useState(false);
 
   function handleQuestion(qa: QA) {
-    if (qa.a) {
-      setAnswer(qa.a);
-      setComplex(false);
-    } else {
-      setAnswer(null);
-      setComplex(true);
-    }
+    if (qa.a) { setAnswer(qa.a); setComplex(false); }
+    else       { setAnswer(null); setComplex(true);  }
   }
 
-  function reset() {
-    setAnswer(null);
-    setComplex(false);
-  }
+  function reset() { setAnswer(null); setComplex(false); }
 
   return (
     <>
-      {/* Bulle flottante */}
+      {/* Bulle flottante — positionnée au-dessus du bouton ScrollToTop */}
       <button
         onClick={() => { setOpen(o => !o); reset(); }}
         aria-label="Aide & Chat"
-        className="fixed bottom-[4.5rem] right-6 z-50 w-12 h-12 rounded-full bg-primary text-white shadow-[0_8px_24px_rgba(193,17,30,0.40)] flex items-center justify-center hover:scale-110 transition-all active:scale-95 animate-secousse"
+        className="fixed bottom-[6.5rem] right-6 z-50 w-12 h-12 rounded-full bg-primary text-white
+          border-2 border-white/80
+          shadow-[0_8px_24px_rgba(193,17,30,0.40)]
+          flex items-center justify-center hover:scale-110 transition-all active:scale-95 animate-secousse"
       >
         <AnimatePresence mode="wait">
           {open
-            ? <motion.span key="x"  initial={{rotate:-90,opacity:0}} animate={{rotate:0,opacity:1}} exit={{rotate:90,opacity:0}} transition={{duration:.2}}><X size={22}/></motion.span>
-            : <motion.span key="msg" initial={{rotate:90,opacity:0}} animate={{rotate:0,opacity:1}} exit={{rotate:-90,opacity:0}} transition={{duration:.2}}><MessageCircle size={22}/></motion.span>
+            ? <motion.span key="x"   initial={{rotate:-90,opacity:0}} animate={{rotate:0,opacity:1}} exit={{rotate:90,opacity:0}}  transition={{duration:.2}}><X size={22}/></motion.span>
+            : <motion.span key="msg" initial={{rotate:90,opacity:0}}  animate={{rotate:0,opacity:1}} exit={{rotate:-90,opacity:0}} transition={{duration:.2}}><MessageCircle size={22}/></motion.span>
           }
         </AnimatePresence>
       </button>
@@ -61,7 +56,7 @@ export function ChatBot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.25 }}
-            className="fixed bottom-[7.5rem] right-6 z-50 w-80 rounded-2xl border border-gray-100 bg-white shadow-[0_16px_48px_rgba(0,0,0,0.16)] overflow-hidden flex flex-col"
+            className="fixed bottom-[10.5rem] right-4 sm:right-6 z-50 w-[calc(100vw-2rem)] sm:w-80 rounded-2xl border border-gray-100 bg-white shadow-[0_16px_48px_rgba(0,0,0,0.16)] overflow-hidden flex flex-col"
           >
             {/* En-tête */}
             <div className="bg-primary px-4 py-3 flex items-center gap-3">
@@ -77,16 +72,20 @@ export function ChatBot() {
             </div>
 
             {/* Corps */}
-            <div className="flex-1 p-4 space-y-3 max-h-72 overflow-y-auto">
+            <div className="flex-1 p-4 space-y-3 max-h-64 overflow-y-auto">
               {!answer && !complex && (
                 <>
                   <p className="text-xs text-gray-500 text-center">Bonjour 👋 Comment puis-je vous aider ?</p>
                   <div className="space-y-2">
                     {QA_LIST.map((qa, i) => (
                       <button key={i} onClick={() => handleQuestion(qa)}
-                        className="w-full flex items-center justify-between gap-2 px-3 py-2.5 rounded-xl border border-gray-100 bg-gray-50 hover:bg-red-50 hover:border-primary/30 text-left text-sm text-gray-800 transition-all group">
+                        className={`w-full flex items-center justify-between gap-2 px-3 py-2.5 rounded-xl border text-left text-sm transition-all group ${
+                          qa.complex
+                            ? 'border-red-200 bg-red-50 text-primary hover:bg-red-100 hover:border-primary/50 font-semibold'
+                            : 'border-gray-100 bg-gray-50 text-gray-800 hover:bg-red-50 hover:border-primary/30'
+                        }`}>
                         <span>{qa.q}</span>
-                        <ChevronRight size={14} className="flex-shrink-0 text-gray-400 group-hover:text-primary transition-colors" />
+                        <ChevronRight size={14} className={`flex-shrink-0 transition-colors ${qa.complex ? 'text-primary' : 'text-gray-400 group-hover:text-primary'}`} />
                       </button>
                     ))}
                   </div>
@@ -104,7 +103,7 @@ export function ChatBot() {
 
               {complex && (
                 <motion.div initial={{opacity:0,y:8}} animate={{opacity:1,y:0}} className="space-y-3">
-                  <div className="bg-gray-100 rounded-2xl rounded-tl-sm px-4 py-3 text-sm text-gray-700 leading-relaxed">
+                  <div className="bg-red-50 border border-red-100 rounded-2xl rounded-tl-sm px-4 py-3 text-sm text-primary font-medium leading-relaxed">
                     Pour cette demande, un membre de l'équipe peut vous aider directement 👇
                   </div>
                   <a href={WA_URL} target="_blank" rel="noreferrer"
