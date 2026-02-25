@@ -12,7 +12,7 @@ import Logo from '../assets/Logomascotte.svg';
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative pt-32 pb-24 lg:pt-48 lg:pb-32 overflow-visible bg-gradient-to-br from-orange-50 via-white to-orange-100">
+    <section className="relative pt-32 pb-24 lg:pt-48 lg:pb-32 overflow-visible bg-transparent">
       {/* Abstract Background Shapes */}
       <div className="absolute top-20 right-0 -mr-20 w-96 h-96 bg-primary rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-float"></div>
       <div className="absolute top-60 left-0 -ml-20 w-80 h-80 bg-yellow-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float-delayed"></div>
@@ -29,7 +29,7 @@ const Hero: React.FC = () => {
                 className="w-9 h-9 object-contain animate-bounce"
                 draggable={false}
               />
-              <span>Gaston a faim ! Et vous ?</span>
+              <span>Déjà adopté par des milliers d'utilisateurs !</span>
             </div>
 
             <h1
@@ -59,11 +59,19 @@ const Hero: React.FC = () => {
               d&apos;œil.
             </p>
 
-            {/* CTA */}
-            <div
-              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 opacity-0 animate-slide-up"
-              style={{ animationDelay: '0.3s' }}
-            >
+            {/* CTA + info dispo */}
+          <div
+            className="opacity-0 animate-slide-up"
+            style={{ animationDelay: '0.3s' }}
+          >
+            {/* Ligne dispo AVANT les boutons */}
+            <p className="mb-4 flex items-center justify-center lg:justify-start gap-2 text-sm text-gray-500 w-full text-center lg:text-left">
+              <span className="status-dot" />
+              Disponible sur iOS &amp; Android
+            </p>
+
+            {/* Boutons */}
+            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
               {/* APPLE STORE */}
               <a
                 href="https://apps.apple.com/app/plat-du-jour"
@@ -120,6 +128,10 @@ const Hero: React.FC = () => {
                 </div>
               </a>
             </div>
+          </div>
+            
+
+
           </div>
 
           {/* Phone + Floating Elements */}

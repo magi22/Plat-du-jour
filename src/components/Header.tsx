@@ -1,36 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import Logo from '../assets/Logomascotte.svg';
+import { useScrolled } from '../hooks/useScrolled';
+import { getStoreLink } from '../lib/getStoreLink';
+import { NAV_LINKS } from '../constants/nav';
 
 const Header: React.FC = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const isScrolled = useScrolled(20);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const navLinks = [
-    { name: 'Accueil', href: '#' },
-    { name: 'Fonctionnement', href: '#how-it-works' },
-    { name: 'Pour les Restaurants', href: '#restaurants' },
-    { name: 'Avis', href: '#reviews' },
-  ];
-    const getStoreLink = () => {
-    const ua = navigator.userAgent || navigator.vendor || (window as any).opera;
-
-    if (/iPad|iPhone|iPod/.test(ua) && !(window as any).MSStream) {
-      return 'https://apps.apple.com/app/plat-du-jour';
-    }
-
-    if (/android/i.test(ua)) {
-      return 'https://play.google.com/store/apps/details?id=com.platdujour';
-    }
-
-    return '#download';
-  };
 
   return (
     <header
@@ -42,6 +19,7 @@ const Header: React.FC = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
+
           {/* Logo */}
           <a href="#" className="flex items-center" aria-label="Retour à l'accueil">
             <img
@@ -54,7 +32,7 @@ const Header: React.FC = () => {
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
+            {NAV_LINKS.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
@@ -63,14 +41,12 @@ const Header: React.FC = () => {
                 {link.name}
               </a>
             ))}
-
-           <a
-          href={getStoreLink()}
-          className="bg-gray-900 text-white px-6 py-2.5 rounded-full hover:bg-primary transition-all transform hover:scale-105 shadow-lg"
-        >
-          Télécharger l'app
-        </a>
-
+            <a
+              href={getStoreLink()}
+              className="bg-gray-900 text-white px-6 py-2.5 rounded-full hover:bg-primary transition-all transform hover:scale-105 shadow-lg"
+            >
+              Télécharger l'app
+            </a>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -91,7 +67,7 @@ const Header: React.FC = () => {
         }`}
       >
         <div className="px-6 py-6 space-y-4 flex flex-col items-center">
-          {navLinks.map((link) => (
+          {NAV_LINKS.map((link) => (
             <a
               key={link.name}
               href={link.href}
@@ -101,7 +77,6 @@ const Header: React.FC = () => {
               {link.name}
             </a>
           ))}
-
           <a
             href="#download"
             className="block w-full text-center bg-primary text-white px-6 py-4 rounded-xl font-bold hover:brightness-95 transition-all shadow-lg mt-4"

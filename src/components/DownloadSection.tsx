@@ -9,10 +9,16 @@ import PlayHover from '../assets/play6.png';
 
 const DownloadSection: React.FC = () => {
   return (
-    <section id="download" className="py-24 relative overflow-hidden bg-gray-900">
-      {/* Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-black z-0"></div>
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/20 rounded-full blur-[120px] pointer-events-none"></div>
+    <section id="download" className="py-24 relative overflow-hidden bg-[#0a0a0f]">
+      {/* Dark animated background */}
+      <div className="anim-bg-dark">
+        <div className="anim-bg-dark-tint" />
+        <div className="anim-bg-dark-grid" />
+        <div className="anim-bg-dark-glow anim-bg-dark-glow-1" />
+        <div className="anim-bg-dark-glow anim-bg-dark-glow-2" />
+      </div>
+      {/* Fondu bas vers footer */}
+      <div className="absolute bottom-0 inset-x-0 h-28 bg-gradient-to-b from-transparent to-[#070710] pointer-events-none z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col md:flex-row items-center justify-between gap-16">
