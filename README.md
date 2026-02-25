@@ -1,20 +1,46 @@
 <div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+  <img src="./src/assets/Logomascotte.svg" alt="Plat du Jour" width="120" />
+  <h1>Plat du Jour</h1>
+  <p>Landing page de l'application mobile qui connecte restaurants et utilisateurs autour des menus du jour.</p>
 </div>
 
-# Run and deploy your AI Studio app
+---
 
-This contains everything you need to run your app locally.
+## Stack
 
-View your app in AI Studio: https://ai.studio/apps/drive/1ZGcaGhD6NfwtDjYOMrVO852iA6S98EkE
+- **React 19** + **TypeScript**
+- **Vite** — bundler
+- **Tailwind CSS** — styles
+- **Framer Motion** — animations
+- **i18n** — FR / EN / DE / IT (détection automatique du navigateur)
 
-## Run Locally
+## Lancer le projet
 
-**Prerequisites:**  Node.js
+**Prérequis :** Node.js
 
+```bash
+npm install
+npm run dev
+```
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Build de production
+
+```bash
+npm run build
+```
+
+## Déploiement
+
+Le projet est configuré pour **Netlify** (`netlify.toml` inclus).
+
+## Structure
+
+```
+src/
+├── assets/          # Images, logos, icônes
+├── animations/      # Variants Framer Motion
+├── components/      # Composants React
+│   └── ui/          # Composants génériques (FadeIn, ScrollToTop…)
+├── i18n/            # Traductions + contexte de langue
+└── index.css        # Styles globaux + animations CSS
+```

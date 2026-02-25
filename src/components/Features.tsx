@@ -38,7 +38,7 @@ const Features: React.FC = () => {
           {t.features.items.map(({ title, desc }, i) => {
             const Icon = ICONS[i];
             return (
-              <motion.div key={title} variants={fadeUp}
+              <motion.div key={i} variants={fadeUp}
                 className="group p-6 bg-white rounded-2xl border border-gray-100 hover:border-primary/30 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
                 <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
                   <Icon className="w-7 h-7 text-primary" />

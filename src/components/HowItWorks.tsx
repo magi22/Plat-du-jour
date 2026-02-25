@@ -43,7 +43,7 @@ const HowItWorks: React.FC = () => {
             {t.howItWorks.steps.map(({ title, desc }, i) => {
               const Icon = ICONS[i];
               return (
-                <motion.div key={title} variants={fadeUp}
+                <motion.div key={i} variants={fadeUp}
                   className="bg-white p-8 rounded-3xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow relative group">
                   <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 mx-auto shadow-md group-hover:rotate-12 group-hover:-translate-y-1 transition-transform duration-300 ${COULEURS[i]}`}>
                     <Icon className="w-7 h-7 text-white" />
