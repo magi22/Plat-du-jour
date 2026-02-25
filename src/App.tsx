@@ -12,6 +12,7 @@ import { Testimonials } from './components/Testimonials';
 import { Faq } from './components/Faq';
 import DownloadSection from './components/DownloadSection';
 import Footer from './components/Footer';
+import { ScrollToTop } from './components/ui/ScrollToTop';
 
 /*
  * TRANSITIONS
@@ -75,6 +76,7 @@ const App: React.FC = () => (
       </main>
 
       <Footer />
+      <ScrollToTop />
     </div>
   </LanguageProvider>
 );

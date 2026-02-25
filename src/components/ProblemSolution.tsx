@@ -91,9 +91,9 @@ export default function ProblemSolution() {
           viewport={defaultViewport}
           variants={staggerContainer}
         >
-          {rows.map((r) => (
+          {rows.map((r, i) => (
             <motion.div
-              key={r.label}
+              key={i}
               variants={fadeUp}
               className="rounded-2xl border border-black/5 bg-white/70 backdrop-blur-sm shadow-sm p-5"
             >

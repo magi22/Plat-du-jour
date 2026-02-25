@@ -17,45 +17,47 @@ const triggerClass = `
   transition-colors group
 `;
 
+type FaqItem = { q: string; a: string };
+
+function FaqColumn({ list, offset = 0 }: { list: FaqItem[]; offset?: number }) {
+  return (
+    <Accordion.Root type="single" collapsible className="space-y-4">
+      {list.map((item, idx) => (
+        <motion.div
+          key={idx + offset}
+          initial={{ opacity: 0, x: offset === 0 ? -16 : 16 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: idx * 0.06 }}
+        >
+          <Accordion.Item value={`item-${idx + offset}`} className={itemClass}>
+            <Accordion.Header>
+              <Accordion.Trigger className={triggerClass}>
+                <span className="leading-snug">{item.q}</span>
+                <ChevronDown
+                  size={20}
+                  className="text-primary flex-shrink-0 transition-transform duration-300 group-data-[state=open]:rotate-180"
+                />
+              </Accordion.Trigger>
+            </Accordion.Header>
+            <Accordion.Content className="overflow-hidden">
+              <div className="px-6 pb-6 -mt-2 text-sm leading-relaxed text-gray-600">
+                {item.a}
+              </div>
+            </Accordion.Content>
+          </Accordion.Item>
+        </motion.div>
+      ))}
+    </Accordion.Root>
+  );
+}
+
 export function Faq() {
   const { t } = useLanguage();
   const items = t.faq.items;
   const midPoint = Math.ceil(items.length / 2);
   const column1 = items.slice(0, midPoint);
   const column2 = items.slice(midPoint);
-
-  function FaqColumn({ list, offset = 0 }: { list: typeof column1; offset?: number }) {
-    return (
-      <Accordion.Root type="single" collapsible className="space-y-4">
-        {list.map((item, idx) => (
-          <motion.div
-            key={idx + offset}
-            initial={{ opacity: 0, x: offset === 0 ? -16 : 16 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: idx * 0.06 }}
-          >
-            <Accordion.Item value={`item-${idx + offset}`} className={itemClass}>
-              <Accordion.Header>
-                <Accordion.Trigger className={triggerClass}>
-                  <span className="leading-snug">{item.q}</span>
-                  <ChevronDown
-                    size={20}
-                    className="text-primary flex-shrink-0 transition-transform duration-300 group-data-[state=open]:rotate-180"
-                  />
-                </Accordion.Trigger>
-              </Accordion.Header>
-              <Accordion.Content className="overflow-hidden">
-                <div className="px-6 pb-6 -mt-2 text-sm leading-relaxed text-gray-600">
-                  {item.a}
-                </div>
-              </Accordion.Content>
-            </Accordion.Item>
-          </motion.div>
-        ))}
-      </Accordion.Root>
-    );
-  }
 
   return (
     <section id="faq" className="py-24 relative overflow-hidden bg-transparent">

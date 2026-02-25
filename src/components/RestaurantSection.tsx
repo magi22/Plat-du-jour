@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { fadeUp, fadeLeft, scaleIn, staggerContainer, defaultViewport } from '../animations/variants';
 import { useLanguage } from '../i18n/LanguageContext';
 import Mascotte from '../assets/Mascotte@2x.png';
+import RestaurantPhoto from '../assets/restaurant (1).png';
 
 const RestaurantSection: React.FC = () => {
   const { t } = useLanguage();
@@ -21,7 +22,7 @@ const RestaurantSection: React.FC = () => {
             initial="hidden" whileInView="visible" viewport={defaultViewport} variants={fadeLeft}>
             <div className="absolute inset-0 bg-primary/10 rounded-3xl transform rotate-3 group-hover:rotate-6 transition-transform duration-500" />
             <div className="relative overflow-hidden rounded-3xl shadow-2xl">
-              <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+              <img src={RestaurantPhoto}
                 alt="Collaboration Restaurant"
                 className="object-cover w-full h-[500px] transform group-hover:scale-105 transition-transform duration-700" loading="lazy" />
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-8">
