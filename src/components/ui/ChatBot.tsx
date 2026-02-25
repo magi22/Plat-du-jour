@@ -22,15 +22,23 @@ export function ChatBot() {
   const [answer, setAnswer]   = useState<string | null>(null);
   const [complex, setComplex] = useState(false);
   const [hint, setHint]       = useState(false);
-  const timer = useRef<ReturnType<typeof setTimeout>>();
+  const showTimer = useRef<ReturnType<typeof setTimeout>>();
+  const hideTimer = useRef<ReturnType<typeof setTimeout>>();
 
-  /* Message d'aide automatique après 15 secondes */
+  /* Afficher le message d'aide après 15s, le masquer automatiquement après 30s */
   useEffect(() => {
-    timer.current = setTimeout(() => setHint(true), 15000);
-    return () => clearTimeout(timer.current);
+    showTimer.current = setTimeout(() => {
+      setHint(true);
+      hideTimer.current = setTimeout(() => setHint(false), 30000);
+    }, 15000);
+    return () => { clearTimeout(showTimer.current); clearTimeout(hideTimer.current); };
   }, []);
 
-  function dismissHint() { setHint(false); clearTimeout(timer.current); }
+  function dismissHint() {
+    setHint(false);
+    clearTimeout(showTimer.current);
+    clearTimeout(hideTimer.current);
+  }
 
   function handleQuestion(qa: QA) {
     if (qa.a) { setAnswer(qa.a); setComplex(false); }

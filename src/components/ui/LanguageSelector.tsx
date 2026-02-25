@@ -3,16 +3,16 @@ import { Globe } from 'lucide-react';
 import { useLanguage } from '../../i18n/LanguageContext';
 import type { Lang } from '../../i18n/translations';
 
-const LANGS: { code: Lang; label: string; flag: string }[] = [
-  { code: 'fr', label: 'Français', flag: '🇫🇷' },
-  { code: 'en', label: 'English',  flag: '🇬🇧' },
-  { code: 'de', label: 'Deutsch',  flag: '🇩🇪' },
-  { code: 'it', label: 'Italiano', flag: '🇮🇹' },
+const LANGS: { code: Lang; flag: string }[] = [
+  { code: 'fr', flag: '🇫🇷' },
+  { code: 'en', flag: '🇬🇧' },
+  { code: 'de', flag: '🇩🇪' },
+  { code: 'it', flag: '🇮🇹' },
 ];
 
 export function LanguageSelector() {
   const { lang, setLang } = useLanguage();
-  const [open, setOpen] = useState(false);
+  const [open, setOpen]   = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   /* Fermer au clic extérieur */
@@ -27,39 +27,37 @@ export function LanguageSelector() {
   const current = LANGS.find(l => l.code === lang)!;
 
   return (
-    <div ref={ref} className="relative">
+    <div ref={ref} className="flex items-center gap-1.5 flex-wrap">
+      {/* Bouton globe — langue active */}
       <button
         onClick={() => setOpen(v => !v)}
-        aria-haspopup="listbox"
+        aria-haspopup="true"
         aria-expanded={open}
         className="flex items-center gap-1.5 px-3 py-2 rounded-full text-sm font-semibold text-gray-600 hover:text-primary hover:bg-gray-100 transition-all"
       >
-        <Globe size={16} className="text-gray-500" />
+        <Globe size={16} className="text-gray-500 flex-shrink-0" />
         <span>{current.flag}</span>
-        <span className="hidden sm:inline uppercase text-xs tracking-wider">{current.code}</span>
+        <span className="uppercase text-xs tracking-wider">{current.code}</span>
       </button>
 
+      {/* Pills horizontaux — s'ouvrent inline, pas de dropdown */}
       {open && (
-        <ul
-          role="listbox"
-          className="absolute left-1/2 -translate-x-1/2 mt-2 w-40 bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden z-[200] animate-pop-in"
-        >
-          {LANGS.map(({ code, label, flag }) => (
-            <li key={code} role="option" aria-selected={code === lang}>
-              <button
-                onClick={() => { setLang(code); setOpen(false); }}
-                className={`w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-colors
-                  ${code === lang
-                    ? 'bg-primary/10 text-primary font-bold'
-                    : 'text-gray-700 hover:bg-gray-50 font-medium'
-                  }`}
-              >
-                <span className="text-base">{flag}</span>
-                {label}
-              </button>
-            </li>
+        <div className="flex items-center gap-1 animate-pop-in">
+          {LANGS.map(({ code, flag }) => (
+            <button
+              key={code}
+              onClick={() => { setLang(code); setOpen(false); }}
+              className={`flex items-center gap-1 px-2.5 py-1.5 rounded-full text-xs font-bold transition-all whitespace-nowrap ${
+                code === lang
+                  ? 'bg-primary text-white shadow-sm'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+            >
+              <span>{flag}</span>
+              <span className="uppercase">{code}</span>
+            </button>
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );
