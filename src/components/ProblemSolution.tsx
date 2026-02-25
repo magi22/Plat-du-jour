@@ -1,46 +1,17 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { fadeUp, staggerContainer, defaultViewport } from "../animations/variants";
-
-const rows = [
-  {
-    label: "Recherche",
-    before: "Vous naviguez entre Google, réseaux sociaux et appels.",
-    after: "Une seule app, tous les menus autour de vous.",
-  },
-  {
-    label: "Temps",
-    before: "10–20 min perdues chaque midi à hésiter.",
-    after: "Choix rapide en moins d'une minute.",
-  },
-  {
-    label: "Infos",
-    before: "Menus incomplets, parfois introuvables en ligne.",
-    after: "Menus mis à jour en temps réel par les restaurants.",
-  },
-  {
-    label: "Prix",
-    before: "Vous découvrez le prix une fois sur place.",
-    after: "Prix affichés avant de vous déplacer.",
-  },
-  {
-    label: "Réservation",
-    before: "Appels, attente, pas de réponse pendant le rush.",
-    after: "Réservez ou commandez en quelques clics.",
-  },
-  {
-    label: "Découverte",
-    before: "Vous retombez souvent sur les mêmes adresses.",
-    after: "Découvrez de nouveaux restaurants près de vous.",
-  },
-];
+import { useLanguage } from "../i18n/LanguageContext";
 
 export default function ProblemSolution() {
+  const { t } = useLanguage();
+  const rows = t.problem.rows;
+
   return (
     <section className="relative py-20 bg-transparent">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
 
-        {/* Title */}
+        {/* Titre */}
         <motion.div
           className="text-center mb-10"
           initial="hidden"
@@ -52,26 +23,25 @@ export default function ProblemSolution() {
             variants={fadeUp}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/70 border border-black/5 text-sm text-gray-700"
           >
-            PROBLÈME → SOLUTION
+            {t.problem.badge}
           </motion.p>
 
           <motion.h2
             variants={fadeUp}
             className="mt-5 text-3xl sm:text-4xl font-extrabold text-gray-900"
           >
-            Vous ne savez jamais quoi manger ?
+            {t.problem.h2}
           </motion.h2>
 
           <motion.p
             variants={fadeUp}
             className="mt-4 text-gray-600 max-w-2xl mx-auto leading-relaxed"
           >
-            En quelques secondes, Plat du Jour vous aide à trouver un menu dispo
-            près de vous — sans appels, sans recherches, sans surprise.
+            {t.problem.subtitle}
           </motion.p>
         </motion.div>
 
-        {/* Desktop table */}
+        {/* Tableau desktop */}
         <motion.div
           className="hidden md:block rounded-3xl border border-black/5 bg-white/70 backdrop-blur-sm shadow-lg overflow-hidden"
           initial="hidden"
@@ -81,12 +51,12 @@ export default function ProblemSolution() {
         >
           <div className="grid grid-cols-3">
             <div className="p-6 border-b border-black/5 bg-white/60">
-              <span className="text-sm font-semibold text-gray-500">Critère</span>
+              <span className="text-sm font-semibold text-gray-500">{t.problem.col1}</span>
             </div>
             <div className="p-6 border-b border-black/5 bg-white/60">
               <div className="flex items-center gap-2 font-semibold text-gray-900">
                 <span className="inline-flex w-2 h-2 rounded-full bg-gray-400" />
-                Le casse-tête
+                {t.problem.col2}
               </div>
             </div>
             <div className="p-6 border-b border-black/5 bg-white/60">
@@ -108,14 +78,12 @@ export default function ProblemSolution() {
           </div>
 
           <div className="px-6 py-5 text-center bg-gradient-to-r from-red-50 via-white to-yellow-50">
-            <p className="font-extrabold text-gray-900">Trouvez. Choisissez. Savourez.</p>
-            <p className="text-sm text-gray-600 mt-1">
-              Passez de l'hésitation à la décision en quelques instants.
-            </p>
+            <p className="font-extrabold text-gray-900">{t.problem.tagline[0]}</p>
+            <p className="text-sm text-gray-600 mt-1">{t.problem.tagline[1]}</p>
           </div>
         </motion.div>
 
-        {/* Mobile version */}
+        {/* Version mobile */}
         <motion.div
           className="md:hidden space-y-4"
           initial="hidden"
@@ -134,7 +102,7 @@ export default function ProblemSolution() {
                 <div className="rounded-xl border border-black/5 bg-white/60 p-4">
                   <div className="flex items-center gap-2 font-semibold text-gray-700">
                     <span className="inline-flex w-2 h-2 rounded-full bg-gray-400" />
-                    Le casse-tête
+                    {t.problem.col2}
                   </div>
                   <p className="mt-2 text-gray-600">{r.before}</p>
                 </div>
@@ -150,10 +118,8 @@ export default function ProblemSolution() {
           ))}
 
           <div className="text-center pt-2">
-            <p className="font-extrabold text-gray-900">Trouvez. Choisissez. Savourez.</p>
-            <p className="text-sm text-gray-600 mt-1">
-              Passez de l'hésitation à la décision en quelques instants.
-            </p>
+            <p className="font-extrabold text-gray-900">{t.problem.tagline[0]}</p>
+            <p className="text-sm text-gray-600 mt-1">{t.problem.tagline[1]}</p>
           </div>
         </motion.div>
 
