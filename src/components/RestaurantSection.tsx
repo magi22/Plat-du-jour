@@ -44,7 +44,7 @@ const RestaurantSection: React.FC = () => {
                 <span className="text-gray-500 text-xs font-bold">{r.revenue}</span>
                 <TrendingUp className="text-green-500 w-4 h-4" />
               </div>
-              <div className="text-2xl font-bold text-gray-900 mb-1">+ 1,250€</div>
+              <div className="text-2xl font-bold text-gray-900 mb-1">+ 1'250 CHF</div>
               <div className="text-xs text-green-600 bg-green-50 inline-block px-2 py-1 rounded-full font-medium">{r.thisMonth}</div>
             </div>
           </motion.div>

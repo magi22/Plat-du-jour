@@ -41,7 +41,7 @@ function FaqColumn({ list, offset = 0 }: { list: FaqItem[]; offset?: number }) {
               </Accordion.Trigger>
             </Accordion.Header>
             <Accordion.Content className="overflow-hidden">
-              <div className="px-6 pb-6 -mt-2 text-sm leading-relaxed text-gray-600">
+              <div className="px-6 pt-2 pb-6 text-sm leading-relaxed text-gray-600">
                 {item.a}
               </div>
             </Accordion.Content>
