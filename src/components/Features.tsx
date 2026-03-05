@@ -34,17 +34,17 @@ const Features: React.FC = () => {
           <p className="mt-3 text-gray-600">{t.features.subtitle}</p>
         </FadeIn>
 
-        <FadeIn stagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <FadeIn stagger className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {t.features.items.map(({ title, desc }, i) => {
             const Icon = ICONS[i];
             return (
               <motion.div key={i} variants={fadeUp}
-                className="group p-6 bg-white rounded-2xl border border-gray-100 hover:border-primary/30 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
-                <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
-                  <Icon className="w-7 h-7 text-primary" />
+                className="group p-4 sm:p-6 bg-white rounded-2xl border border-gray-100 hover:border-primary/30 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+                <div className="w-10 h-10 sm:w-14 sm:h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-3 sm:mb-5 group-hover:scale-110 transition-transform duration-300">
+                  <Icon className="w-5 h-5 sm:w-7 sm:h-7 text-primary" />
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">{title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
+                <h3 className="text-sm sm:text-lg font-bold text-gray-900 mb-1 sm:mb-2">{title}</h3>
+                <p className="text-gray-500 text-xs sm:text-sm leading-relaxed">{desc}</p>
               </motion.div>
             );
           })}

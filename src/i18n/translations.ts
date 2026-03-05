@@ -83,7 +83,7 @@ export interface AppTranslations {
     security: string;
     plans: {
       user: {
-        free: { badge: string; title: string; features: string[]; cta: string };
+        free: { badge: string; title: string; price: string; features: string[]; cta: string };
         premium: {
           badge: string;
           title: string;
@@ -96,8 +96,18 @@ export interface AppTranslations {
         };
       };
       restaurant: {
-        free: { badge: string; title: string; features: string[]; cta: string };
+        free: { badge: string; title: string; price: string; features: string[]; cta: string };
         premium: {
+          badge: string;
+          title: string;
+          features: string[];
+          pricing: {
+            monthly: [string, string];
+            yearly: [string, string, string];
+          };
+          cta: string;
+        };
+        platinum: {
           badge: string;
           title: string;
           features: string[];
@@ -260,14 +270,15 @@ const fr: AppTranslations = {
       user: {
         free: {
           badge: 'Gratuit',
-          title: 'Pour découvrir',
-          features: ["Recherche de restaurants à proximité", "Consultation des plats du jour", "Enregistrer jusqu'à 3 favoris", "Avis et notes de la communauté", "1 notification par semaine"],
+          title: 'Classique',
+          price: '0 CHF / mois',
+          features: ['Accès menus & profils', 'Recherche & géo', '3 menus / jour', '1 image / plat', '10 photos profil'],
           cta: 'Commencer gratuitement',
         },
         premium: {
           badge: 'Premium',
-          title: 'Pour les gourmets',
-          features: ['Tout de Gratuit +', 'Favoris illimités avec collections', 'Notifications personnalisées illimitées', 'Réservation prioritaire en un clic', 'Recommandations IA personnalisées', 'Accès aux offres exclusives restaurants', 'Mode hors-ligne avancé', 'Historique complet de vos repas', 'Badge premium dans les avis', 'Partage de listes avec amis', 'Sauvegarde de lieux personnalisés'],
+          title: 'Premium',
+          features: ['Accès menus & profils', 'Recherche & géo', '3 menus / jour', '1 image / plat', '10 photos profil', 'Illimités — sans pub', 'Favoris & avis avancés', 'Notifications personnalisées'],
           pricing: {
             monthly: ['4.90 CHF', '/mois'],
             yearly: ['49.- CHF', '/an', 'Économisez 2 mois'],
@@ -277,20 +288,31 @@ const fr: AppTranslations = {
       },
       restaurant: {
         free: {
-          badge: 'Gratuit',
-          title: 'Pour démarrer',
-          features: ['Profil restaurant visible', 'Publication de 1 plat du jour/semaine', 'Statistiques de base (vues)', 'Page de présentation simple', 'Localisation sur la carte', 'Gestion des horaires', 'Notifications clients limitées'],
+          badge: 'Standard',
+          title: 'Classique',
+          price: '0 CHF / mois',
+          features: ['3 menus / jour', '1 image / plat', '10 photos profil'],
           cta: 'Commencer gratuitement',
         },
         premium: {
-          badge: 'Premium Pro',
-          title: 'Pour performer',
-          features: ['Tout de Gratuit +', 'Plats du jour illimités avec photos HD', 'Système de réservation intégré', 'Analytics avancés en temps réel', 'Badge Premium & mise en avant', 'Campagnes push personnalisées', 'Rapports détaillés & insights IA', 'Support prioritaire dédié', 'API & intégrations tierces', 'Gestion multi-utilisateurs'],
+          badge: 'Premium',
+          title: 'Premium / Itinérant',
+          features: ['3 menus / jour', '1 image / plat', '10 photos profil', '5 menus / jour', '3 images / plat', 'Cadeaux promotionnels', 'Profil mis en avant', 'Gestion emplacements itinérants'],
           pricing: {
-            monthly: ['49 CHF', '/mois'],
-            yearly: ['490 CHF', '/an', 'Économisez 2 mois'],
+            monthly: ['29 CHF', '/mois'],
+            yearly: ['290 CHF', '/an', 'Économisez 2 mois'],
           },
           cta: 'Choisir ce forfait',
+        },
+        platinum: {
+          badge: 'Platinum',
+          title: 'Platinum / Itinérant Multi',
+          features: ['3 menus / jour', '1 image / plat', '10 photos profil', '5 menus / jour', '3 images / plat', 'Cadeaux promotionnels', 'Profil mis en avant', 'Gestion emplacements itinérants', "Jusqu'à 5 établissements", '+5 CHF / unité supplémentaire'],
+          pricing: {
+            monthly: ['59 CHF', '/mois'],
+            yearly: ['590 CHF', '/an', 'Économisez 2 mois'],
+          },
+          cta: 'Choisir Platinum',
         },
       },
     },
@@ -461,14 +483,15 @@ const en: AppTranslations = {
       user: {
         free: {
           badge: 'Free',
-          title: 'To explore',
-          features: ['Search for nearby restaurants', "Browse today's daily specials", 'Save up to 3 favourites', 'Community reviews and ratings', '1 notification per week'],
+          title: 'Classic',
+          price: 'CHF 0 / month',
+          features: ['Menu & profile access', 'Search & geolocation', '3 menus / day', '1 image / dish', '10 profile photos'],
           cta: 'Start for free',
         },
         premium: {
           badge: 'Premium',
-          title: 'For foodies',
-          features: ['Everything in Free +', 'Unlimited favourites with collections', 'Unlimited personalised notifications', 'Priority one-click booking', 'Personalised AI recommendations', 'Access to exclusive restaurant offers', 'Advanced offline mode', 'Full meal history', 'Premium badge in reviews', 'Share lists with friends', 'Save custom locations'],
+          title: 'Premium',
+          features: ['Menu & profile access', 'Search & geolocation', '3 menus / day', '1 image / dish', '10 profile photos', 'Unlimited — ad-free', 'Favourites & advanced reviews', 'Personalised notifications'],
           pricing: {
             monthly: ['CHF 4.90', '/month'],
             yearly: ['CHF 49.-', '/year', 'Save 2 months'],
@@ -478,20 +501,31 @@ const en: AppTranslations = {
       },
       restaurant: {
         free: {
-          badge: 'Free',
-          title: 'To get started',
-          features: ['Visible restaurant profile', 'Post 1 daily special/week', 'Basic statistics (views)', 'Simple presentation page', 'Location on map', 'Opening hours management', 'Limited customer notifications'],
+          badge: 'Standard',
+          title: 'Classic',
+          price: 'CHF 0 / month',
+          features: ['3 menus / day', '1 image / dish', '10 profile photos'],
           cta: 'Start for free',
         },
         premium: {
-          badge: 'Premium Pro',
-          title: 'To perform',
-          features: ['Everything in Free +', 'Unlimited daily specials with HD photos', 'Integrated booking system', 'Advanced real-time analytics', 'Premium badge & featured placement', 'Personalised push campaigns', 'Detailed reports & AI insights', 'Dedicated priority support', 'API & third-party integrations', 'Multi-user management'],
+          badge: 'Premium',
+          title: 'Premium / Mobile',
+          features: ['3 menus / day', '1 image / dish', '10 profile photos', '5 menus / day', '3 images / dish', 'Promotional gifts', 'Featured profile', 'Mobile location management'],
           pricing: {
-            monthly: ['CHF 49', '/month'],
-            yearly: ['CHF 490', '/year', 'Save 2 months'],
+            monthly: ['CHF 29', '/month'],
+            yearly: ['CHF 290', '/year', 'Save 2 months'],
           },
           cta: 'Choose this plan',
+        },
+        platinum: {
+          badge: 'Platinum',
+          title: 'Platinum / Multi-Location',
+          features: ['3 menus / day', '1 image / dish', '10 profile photos', '5 menus / day', '3 images / dish', 'Promotional gifts', 'Featured profile', 'Mobile location management', 'Up to 5 establishments', '+CHF 5 / additional unit'],
+          pricing: {
+            monthly: ['CHF 59', '/month'],
+            yearly: ['CHF 590', '/year', 'Save 2 months'],
+          },
+          cta: 'Choose Platinum',
         },
       },
     },
@@ -662,14 +696,15 @@ const de: AppTranslations = {
       user: {
         free: {
           badge: 'Kostenlos',
-          title: 'Zum Entdecken',
-          features: ['Suche nach nahegelegenen Restaurants', 'Tagesmenüs ansehen', 'Bis zu 3 Favoriten speichern', 'Community-Bewertungen und -Noten', '1 Benachrichtigung pro Woche'],
+          title: 'Klassisch',
+          price: '0 CHF / Monat',
+          features: ['Menü- & Profilzugang', 'Suche & Geolokalisierung', '3 Menüs / Tag', '1 Bild / Gericht', '10 Profilfotos'],
           cta: 'Kostenlos starten',
         },
         premium: {
           badge: 'Premium',
-          title: 'Für Feinschmecker',
-          features: ['Alles aus Kostenlos +', 'Unbegrenzte Favoriten mit Sammlungen', 'Unbegrenzte personalisierte Benachrichtigungen', 'Prioritäts-Reservierung per Klick', 'Personalisierte KI-Empfehlungen', 'Zugang zu exklusiven Restaurantangeboten', 'Erweiterter Offline-Modus', 'Vollständiger Mahlzeitenverlauf', 'Premium-Badge in Bewertungen', 'Listen mit Freunden teilen', 'Personalisierte Orte speichern'],
+          title: 'Premium',
+          features: ['Menü- & Profilzugang', 'Suche & Geolokalisierung', '3 Menüs / Tag', '1 Bild / Gericht', '10 Profilfotos', 'Unbegrenzt — werbefrei', 'Favoriten & erweiterte Bewertungen', 'Personalisierte Benachrichtigungen'],
           pricing: {
             monthly: ['4.90 CHF', '/Monat'],
             yearly: ['49.- CHF', '/Jahr', '2 Monate sparen'],
@@ -679,20 +714,31 @@ const de: AppTranslations = {
       },
       restaurant: {
         free: {
-          badge: 'Kostenlos',
-          title: 'Zum Starten',
-          features: ['Sichtbares Restaurantprofil', '1 Tagesmenü/Woche veröffentlichen', 'Grundstatistiken (Aufrufe)', 'Einfache Präsentationsseite', 'Standort auf der Karte', 'Öffnungszeitenverwaltung', 'Begrenzte Kundenbenachrichtigungen'],
+          badge: 'Standard',
+          title: 'Klassisch',
+          price: '0 CHF / Monat',
+          features: ['3 Menüs / Tag', '1 Bild / Gericht', '10 Profilfotos'],
           cta: 'Kostenlos starten',
         },
         premium: {
-          badge: 'Premium Pro',
-          title: 'Für mehr Leistung',
-          features: ['Alles aus Kostenlos +', 'Unbegrenzte Tagesmenüs mit HD-Fotos', 'Integriertes Reservierungssystem', 'Erweiterte Echtzeit-Analysen', 'Premium-Badge & Hervorgehobene Platzierung', 'Personalisierte Push-Kampagnen', 'Detaillierte Berichte & KI-Einblicke', 'Dedizierter Prioritätssupport', 'API & Drittanbieter-Integrationen', 'Mehrbenutzer-Verwaltung'],
+          badge: 'Premium',
+          title: 'Premium / Mobil',
+          features: ['3 Menüs / Tag', '1 Bild / Gericht', '10 Profilfotos', '5 Menüs / Tag', '3 Bilder / Gericht', 'Werbungsgeschenke', 'Hervorgehobenes Profil', 'Verwaltung mobiler Standorte'],
           pricing: {
-            monthly: ['49 CHF', '/Monat'],
-            yearly: ['490 CHF', '/Jahr', '2 Monate sparen'],
+            monthly: ['29 CHF', '/Monat'],
+            yearly: ['290 CHF', '/Jahr', '2 Monate sparen'],
           },
           cta: 'Dieses Paket wählen',
+        },
+        platinum: {
+          badge: 'Platinum',
+          title: 'Platinum / Multi-Standort',
+          features: ['3 Menüs / Tag', '1 Bild / Gericht', '10 Profilfotos', '5 Menüs / Tag', '3 Bilder / Gericht', 'Werbungsgeschenke', 'Hervorgehobenes Profil', 'Verwaltung mobiler Standorte', 'Bis zu 5 Betriebe', '+5 CHF / zusätzliche Einheit'],
+          pricing: {
+            monthly: ['59 CHF', '/Monat'],
+            yearly: ['590 CHF', '/Jahr', '2 Monate sparen'],
+          },
+          cta: 'Platinum wählen',
         },
       },
     },
@@ -863,14 +909,15 @@ const it: AppTranslations = {
       user: {
         free: {
           badge: 'Gratuito',
-          title: 'Per scoprire',
-          features: ['Ricerca ristoranti nelle vicinanze', 'Consultazione dei piatti del giorno', 'Salva fino a 3 preferiti', 'Recensioni e valutazioni della community', '1 notifica a settimana'],
+          title: 'Classico',
+          price: '0 CHF / mese',
+          features: ['Accesso menu & profili', 'Ricerca & geolocalizzazione', '3 menu / giorno', '1 immagine / piatto', '10 foto profilo'],
           cta: 'Inizia gratuitamente',
         },
         premium: {
           badge: 'Premium',
-          title: 'Per i buongustai',
-          features: ['Tutto del Gratuito +', 'Preferiti illimitati con collezioni', 'Notifiche personalizzate illimitate', 'Prenotazione prioritaria in un clic', 'Raccomandazioni AI personalizzate', 'Accesso alle offerte esclusive dei ristoranti', 'Modalità offline avanzata', 'Cronologia completa dei pasti', 'Badge premium nelle recensioni', 'Condivisione di liste con amici', 'Salvataggio di luoghi personalizzati'],
+          title: 'Premium',
+          features: ['Accesso menu & profili', 'Ricerca & geolocalizzazione', '3 menu / giorno', '1 immagine / piatto', '10 foto profilo', 'Illimitati — senza pubblicità', 'Preferiti & recensioni avanzate', 'Notifiche personalizzate'],
           pricing: {
             monthly: ['4.90 CHF', '/mese'],
             yearly: ['49.- CHF', '/anno', 'Risparmia 2 mesi'],
@@ -880,20 +927,31 @@ const it: AppTranslations = {
       },
       restaurant: {
         free: {
-          badge: 'Gratuito',
-          title: 'Per iniziare',
-          features: ['Profilo ristorante visibile', 'Pubblicazione di 1 piatto del giorno/settimana', 'Statistiche di base (visualizzazioni)', 'Pagina di presentazione semplice', 'Posizione sulla mappa', 'Gestione degli orari', 'Notifiche clienti limitate'],
+          badge: 'Standard',
+          title: 'Classico',
+          price: '0 CHF / mese',
+          features: ['3 menu / giorno', '1 immagine / piatto', '10 foto profilo'],
           cta: 'Inizia gratuitamente',
         },
         premium: {
-          badge: 'Premium Pro',
-          title: 'Per performare',
-          features: ['Tutto del Gratuito +', 'Piatti del giorno illimitati con foto HD', 'Sistema di prenotazione integrato', 'Analytics avanzati in tempo reale', 'Badge Premium & messa in evidenza', 'Campagne push personalizzate', 'Report dettagliati & insights AI', 'Supporto prioritario dedicato', 'API & integrazioni di terze parti', 'Gestione multi-utente'],
+          badge: 'Premium',
+          title: 'Premium / Itinerante',
+          features: ['3 menu / giorno', '1 immagine / piatto', '10 foto profilo', '5 menu / giorno', '3 immagini / piatto', 'Omaggi promozionali', 'Profilo in evidenza', 'Gestione posizioni itineranti'],
           pricing: {
-            monthly: ['49 CHF', '/mese'],
-            yearly: ['490 CHF', '/anno', 'Risparmia 2 mesi'],
+            monthly: ['29 CHF', '/mese'],
+            yearly: ['290 CHF', '/anno', 'Risparmia 2 mesi'],
           },
           cta: 'Scegli questo piano',
+        },
+        platinum: {
+          badge: 'Platinum',
+          title: 'Platinum / Multi-Itinerante',
+          features: ['3 menu / giorno', '1 immagine / piatto', '10 foto profilo', '5 menu / giorno', '3 immagini / piatto', 'Omaggi promozionali', 'Profilo in evidenza', 'Gestione posizioni itineranti', 'Fino a 5 stabilimenti', '+5 CHF / unità aggiuntiva'],
+          pricing: {
+            monthly: ['59 CHF', '/mese'],
+            yearly: ['590 CHF', '/anno', 'Risparmia 2 mesi'],
+          },
+          cta: 'Scegli Platinum',
         },
       },
     },
