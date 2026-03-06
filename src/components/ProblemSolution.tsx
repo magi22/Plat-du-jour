@@ -91,7 +91,7 @@ export default function ProblemSolution() {
           viewport={defaultViewport}
           variants={staggerContainer}
         >
-          {rows.slice(0, 3).map((r, i) => (
+          {rows.slice(0, 2).map((r, i) => (
             <motion.div
               key={i}
               variants={fadeUp}
