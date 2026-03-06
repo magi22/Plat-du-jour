@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { MapPin, Clock, Star, Compass } from "lucide-react";
 import { fadeUp, staggerContainer, defaultViewport } from "../animations/variants";
 import { useLanguage } from "../i18n/LanguageContext";
-import mascotteQuestion from "../assets/Mascotte question.svg";
+import mascotteQuestion from "../assets/Mascotte-question.svg";
 
 const ICONS = [MapPin, Clock, Star, Compass];
 
