@@ -31,6 +31,15 @@ export interface AppTranslations {
     tagline: [string, string];
     rows: Array<{ label: string; before: string; after: string }>;
   };
+  mascot: {
+    badge: string;
+    h2: string;
+    lead: string;
+    subtitle: string;
+    cards: Array<{ title: string; desc: string }>;
+    cta: string;
+    ctaRestaurant: string;
+  };
   howItWorks: {
     badge: string;
     h2: string;
@@ -198,6 +207,20 @@ const fr: AppTranslations = {
       { label: 'Réservation', before: 'Appels, attente, pas de réponse pendant le rush.', after: 'Réservez ou commandez en quelques clics.' },
       { label: 'Découverte', before: 'Vous retombez souvent sur les mêmes adresses.', after: 'Découvrez de nouveaux restaurants près de vous.' },
     ],
+  },
+  mascot: {
+    badge: 'Votre compagnon repas',
+    h2: 'Que vais-je manger ce midi ?',
+    lead: 'Mangez mieux, sans chercher.',
+    subtitle: "Plat du Jour trouve les meilleurs menus du jour autour de vous. Rapide, local et sans prise de tête.",
+    cards: [
+      { title: 'Recherche localisée', desc: 'Tous les menus disponibles autour de vous, en temps réel.' },
+      { title: 'Choix simplifié', desc: 'Photos, prix et description pour décider en quelques secondes.' },
+      { title: 'Réservation rapide', desc: "Réservez votre table directement depuis l'app, en un clic." },
+      { title: 'Nouvelles découvertes', desc: 'Explorez de nouveaux restaurants et menus chaque jour.' },
+    ],
+    cta: "Télécharger l'app",
+    ctaRestaurant: 'Je suis restaurateur',
   },
   howItWorks: {
     badge: 'COMMENT ÇA MARCHE',
@@ -412,6 +435,20 @@ const en: AppTranslations = {
       { label: 'Discovery', before: 'You keep going back to the same places.', after: 'Discover new restaurants near you.' },
     ],
   },
+  mascot: {
+    badge: 'Your meal companion',
+    h2: 'What will I eat for lunch?',
+    lead: 'Eat better, without searching.',
+    subtitle: "Plat du Jour finds the best daily specials around you. Fast, local and hassle-free.",
+    cards: [
+      { title: 'Local search', desc: 'All available menus around you, in real time.' },
+      { title: 'Easy choice', desc: 'Photos, prices and descriptions to decide in seconds.' },
+      { title: 'Quick booking', desc: 'Book your table directly from the app, in one tap.' },
+      { title: 'New discoveries', desc: 'Explore new restaurants and menus every day.' },
+    ],
+    cta: 'Download the app',
+    ctaRestaurant: "I'm a restaurant owner",
+  },
   howItWorks: {
     badge: 'HOW IT WORKS',
     h2: 'How does it work?',
@@ -625,6 +662,20 @@ const de: AppTranslations = {
       { label: 'Entdeckung', before: 'Du gehst immer wieder zu denselben Adressen.', after: 'Entdecke neue Restaurants in deiner Nähe.' },
     ],
   },
+  mascot: {
+    badge: 'Dein Essensbegleiter',
+    h2: 'Was esse ich heute Mittag?',
+    lead: 'Besser essen, ohne zu suchen.',
+    subtitle: "Plat du Jour findet die besten Tagesmenüs in deiner Nähe. Schnell, lokal und unkompliziert.",
+    cards: [
+      { title: 'Lokale Suche', desc: 'Alle verfügbaren Menüs in deiner Nähe, in Echtzeit.' },
+      { title: 'Einfache Wahl', desc: 'Fotos, Preise und Beschreibung, um in Sekunden zu entscheiden.' },
+      { title: 'Schnelle Reservierung', desc: 'Reserviere deinen Tisch direkt in der App, mit einem Klick.' },
+      { title: 'Neue Entdeckungen', desc: 'Entdecke jeden Tag neue Restaurants und Menüs.' },
+    ],
+    cta: 'App herunterladen',
+    ctaRestaurant: 'Ich bin Restaurantbetreiber',
+  },
   howItWorks: {
     badge: 'SO FUNKTIONIERT ES',
     h2: 'Wie funktioniert es?',
@@ -837,6 +888,20 @@ const it: AppTranslations = {
       { label: 'Prenotazione', before: 'Telefonate, attesa, nessuna risposta durante il rush.', after: 'Prenota o ordina in pochi clic.' },
       { label: 'Scoperta', before: 'Torni sempre negli stessi posti.', after: 'Scopri nuovi ristoranti vicino a te.' },
     ],
+  },
+  mascot: {
+    badge: 'Il tuo compagno dei pasti',
+    h2: 'Cosa mangio a pranzo?',
+    lead: 'Mangia meglio, senza cercare.',
+    subtitle: "Plat du Jour trova i migliori piatti del giorno intorno a te. Rapido, locale e senza pensieri.",
+    cards: [
+      { title: 'Ricerca localizzata', desc: 'Tutti i menu disponibili intorno a te, in tempo reale.' },
+      { title: 'Scelta semplificata', desc: 'Foto, prezzi e descrizione per decidere in pochi secondi.' },
+      { title: 'Prenotazione rapida', desc: "Prenota il tuo tavolo direttamente dall'app, in un clic." },
+      { title: 'Nuove scoperte', desc: 'Esplora nuovi ristoranti e menu ogni giorno.' },
+    ],
+    cta: "Scarica l'app",
+    ctaRestaurant: 'Sono un ristoratore',
   },
   howItWorks: {
     badge: 'COME FUNZIONA',

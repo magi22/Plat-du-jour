@@ -2,7 +2,7 @@ import React from 'react';
 import { LanguageProvider } from './i18n/LanguageContext';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import ProblemSolution from './components/ProblemSolution';
+import MascotSection from './components/MascotSection';
 import HowItWorks from './components/HowItWorks';
 import Features from './components/Features';
 import { AppShowcase } from './components/AppShowcase';
@@ -50,7 +50,7 @@ const App: React.FC = () => (
       <main>
         {/* Zone blanche animée */}
         <Hero />
-        <ProblemSolution />
+        <MascotSection />
 
         <Fondu de="transparent" vers="#f9fafb" />
         <HowItWorks />                {/* gris clair */}
