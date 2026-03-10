@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Instagram, Facebook, Twitter } from 'lucide-react';
 import Logo from '../assets/Logomascotte.svg';
 import { useLanguage } from '../i18n/LanguageContext';
@@ -46,8 +47,9 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="font-bold text-white mb-6">{f.legal}</h4>
             <ul className="space-y-3 text-sm text-gray-400">
-              <li><a href="#" className="hover:text-primary transition-colors">{f.terms}</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">{f.privacy}</a></li>
+              <li><Link to="/cgu" className="hover:text-primary transition-colors">{f.terms}</Link></li>
+              <li><Link to="/politique-de-confidentialite" className="hover:text-primary transition-colors">{f.privacy}</Link></li>
+              <li><Link to="/mentions-legales" className="hover:text-primary transition-colors">Mentions légales</Link></li>
             </ul>
           </div>
 

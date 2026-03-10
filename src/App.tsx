@@ -1,5 +1,9 @@
 import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { LanguageProvider } from './i18n/LanguageContext';
+import Cgu from './pages/Cgu';
+import PolitiqueConfidentialite from './pages/PolitiqueConfidentialite';
+import MentionsLegales from './pages/MentionsLegales';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import MascotSection from './components/MascotSection';
@@ -33,54 +37,59 @@ const Fondu = ({ de, vers }: { de: string; vers: string }) => (
     aria-hidden className="pointer-events-none" />
 );
 
-const App: React.FC = () => (
-  <LanguageProvider>
-    <div className="relative font-sans text-gray-800 bg-white selection:bg-primary selection:text-white w-full overflow-x-hidden">
-
-      {/* Fond animé global clair */}
-      <div className="fa">
-        <div className="fa-tinte" />
-        <div className="fa-grille" />
-        <div className="fa-lueur fa-l1" />
-        <div className="fa-lueur fa-l2" />
-      </div>
-
-      <Header />
-
-      <main>
-        {/* Zone blanche animée */}
-        <Hero />
-        <MascotSection />
-
-        <Fondu de="transparent" vers="#f9fafb" />
-        <HowItWorks />                {/* gris clair */}
-        <Fondu de="#f9fafb" vers="transparent" />
-
-        <Features />                  {/* blanc animé */}
-
-        <Ligne />                     {/* blanc → noir */}
-        <AppShowcase />               {/* section sombre */}
-        <Ligne sombre />              {/* noir → blanc */}
-
-        <RestaurantSection />         {/* blanc animé */}
-
-        <Fondu de="transparent" vers="#f9fafb" />
-        <Pricing />                   {/* gris clair */}
-        <Fondu de="#f9fafb" vers="transparent" />
-
-        <Testimonials />              {/* blanc animé */}
-
-        <Faq />                       {/* blanc animé */}
-
-        <Ligne />                     {/* blanc → noir */}
-        <DownloadSection />           {/* section sombre */}
-      </main>
-
-      <Footer />
-      <ChatBot />
-      <ScrollToTop />
+/** Page d'accueil complète */
+const HomePage: React.FC = () => (
+  <div className="relative font-sans text-gray-800 bg-white selection:bg-primary selection:text-white w-full overflow-x-hidden">
+    <div className="fa">
+      <div className="fa-tinte" />
+      <div className="fa-grille" />
+      <div className="fa-lueur fa-l1" />
+      <div className="fa-lueur fa-l2" />
     </div>
-  </LanguageProvider>
+    <Header />
+    <main>
+      <Hero />
+      <MascotSection />
+
+      <Fondu de="transparent" vers="#f9fafb" />
+      <HowItWorks />
+      <Fondu de="#f9fafb" vers="transparent" />
+
+      <Features />
+
+      <Ligne />
+      <AppShowcase />
+      <Ligne sombre />
+
+      <RestaurantSection />
+
+      <Fondu de="transparent" vers="#f9fafb" />
+      <Pricing />
+      <Fondu de="#f9fafb" vers="transparent" />
+
+      <Testimonials />
+      <Faq />
+
+      <Ligne />
+      <DownloadSection />
+    </main>
+    <Footer />
+    <ChatBot />
+    <ScrollToTop />
+  </div>
+);
+
+const App: React.FC = () => (
+  <BrowserRouter>
+    <LanguageProvider>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/cgu" element={<Cgu />} />
+        <Route path="/politique-de-confidentialite" element={<PolitiqueConfidentialite />} />
+        <Route path="/mentions-legales" element={<MentionsLegales />} />
+      </Routes>
+    </LanguageProvider>
+  </BrowserRouter>
 );
 
 export default App;
