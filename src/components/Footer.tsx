@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Instagram, Facebook, Twitter } from 'lucide-react';
+import { Instagram, Facebook, X } from 'lucide-react';
 import Logo from '../assets/Logomascotte.svg';
 import { useLanguage } from '../i18n/LanguageContext';
 
@@ -27,8 +27,8 @@ const Footer: React.FC = () => {
               <a href="#" className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center text-gray-300 hover:bg-primary hover:text-white transition-colors" aria-label="Facebook">
                 <Facebook size={16} />
               </a>
-              <a href="#" className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center text-gray-300 hover:bg-primary hover:text-white transition-colors" aria-label="Twitter / X">
-                <Twitter size={16} />
+              <a href="#" className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center text-gray-300 hover:bg-primary hover:text-white transition-colors" aria-label="X">
+                <X size={16} />
               </a>
             </div>
           </div>
